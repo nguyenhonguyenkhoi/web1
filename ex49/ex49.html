@@ -1,0 +1,268 @@
+<html lang="vi">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Online Classifieds Search Form</title>
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+
+            body {
+                margin: 0;
+                padding: 30px;
+                background: #ffffff;
+                font-family: "Times New Roman", Times, serif;
+                color: #000;
+            }
+
+            .form-box {
+                width: 610px;
+                max-width: 100%;
+                margin: 0 auto;
+                padding: 18px 18px 22px;
+                background: #d2ffff;
+                border: 2px solid #2d78c9;
+            }
+
+            h1 {
+                margin: 0 0 14px;
+                padding-bottom: 14px;
+                border-bottom: 1px solid #777;
+                color: #d71919;
+                font-size: 24px;
+                font-weight: bold;
+            }
+
+            .question {
+                margin: 13px 0 7px;
+                font-size: 16px;
+                font-weight: bold;
+            }
+
+            .section {
+                margin-bottom: 10px;
+            }
+
+            .radio-grid,
+            .check-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1.35fr;
+                column-gap: 14px;
+                row-gap: 2px;
+                padding-left: 6px;
+            }
+
+            .radio-grid {
+                grid-template-columns: 1fr 1fr;
+                max-width: 420px;
+            }
+
+            label {
+                font-size: 15px;
+                font-weight: normal;
+                cursor: pointer;
+            }
+
+            input[type="radio"],
+            input[type="checkbox"] {
+                margin-right: 3px;
+                vertical-align: middle;
+                accent-color: #168b1d;
+            }
+
+            .date-row {
+                display: flex;
+                align-items: center;
+                gap: 6px;
+                font-size: 15px;
+            }
+
+            .date-row input,
+            .keyword-input {
+                height: 24px;
+                border: 1px solid #9db7bf;
+                background: white;
+                padding: 2px 5px;
+                font-family: "Times New Roman", Times, serif;
+                font-size: 14px;
+            }
+
+            .date-row input {
+                width: 120px;
+            }
+
+            .keyword-input {
+                width: 100%;
+                margin-top: 8px;
+            }
+
+            .actions {
+                display: flex;
+                gap: 22px;
+                align-items: flex-start;
+                margin-top: 20px;
+                padding-left: 7px;
+            }
+
+            .action {
+                border: 0;
+                background: transparent;
+                padding: 0;
+                font-family: "Times New Roman", Times, serif;
+                cursor: pointer;
+                text-align: center;
+            }
+
+            .action img {
+                display: block;
+                width: 55px;
+                height: auto;
+                margin: 0 auto 2px;
+            }
+
+            .action span {
+                display: block;
+                font-size: 15px;
+                font-weight: bold;
+            }
+
+            .search-text {
+                color: green;
+            }
+
+            .help-text {
+                color: blue;
+            }
+
+            .cancel-text {
+                color: #ff0066;
+            }
+
+            .hint {
+                margin-top: 18px;
+                font-size: 14px;
+                color: #333;
+            }
+
+            @media (max-width: 650px) {
+                body {
+                    padding: 15px;
+                }
+
+                .form-box {
+                    width: 100%;
+                }
+
+                .check-grid {
+                    grid-template-columns: 1fr 1fr;
+                }
+
+                .date-row {
+                    flex-wrap: wrap;
+                }
+            }
+        </style>
+    </head>
+    <body>
+
+    <form id="classifiedForm" class="form-box">
+        <h1>Online Classifieds Search Form</h1>
+
+        <div class="question">
+            1) Search for a classified in the following sections:
+        </div>
+        <div class="section radio-grid">
+            <label><input type="radio" name="section" value="Employment">Employment</label>
+            <label><input type="radio" name="section" value="Personal">Personal</label>
+            <label><input type="radio" name="section" value="For Sale">For Sale</label>
+            <label><input type="radio" name="section" value="Miscellaneous">Miscellaneous</label>
+            <label><input type="radio" name="section" value="Housing">Housing</label>
+            <label><input type="radio" name="section" value="All of the above">All of the above</label>
+        </div>
+
+        <div class="question">
+            2) Search the following publications:
+        </div>
+        <div class="section check-grid">
+            <label><input type="checkbox" name="publication" value="Midwest times">Midwest times</label>
+            <label><input type="checkbox" name="publication" value="Modern News">Modern News</label>
+            <label><input type="checkbox" name="publication" value="Employment Today">Employment Today</label>
+
+            <label><input type="checkbox" name="publication" value="Great Lakes Classifieds">Great Lakes Classifieds</label>
+            <label><input type="checkbox" name="publication" value="Middleton Daily">Middleton Daily</label>
+            <label><input type="checkbox" name="publication" value="Cashtown Daily News">Cashtown Daily News</label>
+        </div>
+
+        <div class="question">
+            3) From <span style="font-weight: normal;">to</span>
+        </div>
+        <div class="date-row">
+            <input type="text" id="fromDate" name="fromDate" placeholder="mm/dd/yy">
+            <span>to</span>
+            <input type="text" id="toDate" name="toDate" placeholder="mm/dd/yy">
+        </div>
+
+        <div class="question">
+            4) Enter a few keywords to describe the classified.
+        </div>
+        <input
+            type="text"
+            id="keywords"
+            name="keywords"
+            class="keyword-input"
+            aria-label="Keywords"
+        >
+
+        <div class="question">
+            5) Click one of the options below:
+        </div>
+
+        <div class="actions">
+            <button type="button" class="action" onclick="doSearch()" title="Search">
+                <img src="img/Search.gif" alt="Search">
+                <span class="search-text">Search</span>
+            </button>
+
+            <button type="button" class="action" onclick="openHelp()" title="Help">
+                <img src="img/Help.gif" alt="Help">
+                <span class="help-text">Help</span>
+            </button>
+
+            <button type="button" class="action" onclick="cancelForm()" title="Cancel">
+                <img src="img/Cancel.gif" alt="Cancel">
+                <span class="cancel-text">Cancel</span>
+            </button>
+        </div>
+    </form>
+
+    <script>
+        function doSearch() {
+            const form = document.getElementById("classifiedForm");
+            const data = new FormData(form);
+
+            const sections = data.get("section") || "Chưa chọn";
+            const publications = data.getAll("publication");
+
+            let message = "Search giả lập thành công!\\n\\n";
+            message += "Section: " + sections + "\\n";
+            message += "Publications: " +
+                (publications.length ? publications.join(", ") : "Chưa chọn") + "\\n";
+            message += "From: " + (document.getElementById("fromDate").value || "Chưa nhập") + "\\n";
+            message += "To: " + (document.getElementById("toDate").value || "Chưa nhập") + "\\n";
+            message += "Keywords: " + (document.getElementById("keywords").value || "Chưa nhập");
+
+            alert(message);
+        }
+
+        function openHelp() {
+            window.open("help.html", "_blank", "width=700,height=500");
+        }
+
+        function cancelForm() {
+            document.getElementById("classifiedForm").reset();
+        }
+    </script>
+
+    </body>
+</html>

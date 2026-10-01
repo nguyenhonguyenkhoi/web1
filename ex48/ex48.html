@@ -1,0 +1,307 @@
+<html lang="vi">
+    <head>
+        <meta charset="UTF-8">
+        <title>Jackson Electronics - Registration Form</title>
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+
+            body {
+                margin: 0;
+                background: #8fc4ef;
+                font-family: "Times New Roman", serif;
+                color: #111;
+            }
+
+            .page {
+                width: 620px;
+                margin: 0 auto;
+                padding: 8px 18px 18px;
+            }
+
+            .logo {
+                display: block;
+                width: 311px;
+                height: 90px;
+                margin: 0 auto 24px;
+            }
+
+            h1 {
+                text-align: center;
+                font-size: 24px;
+                margin: 0 0 26px;
+            }
+
+            .intro {
+                text-align: center;
+                margin-bottom: 10px;
+                font-size: 15px;
+            }
+
+            form {
+                width: 100%;
+            }
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+
+            td {
+                padding: 3px 0;
+                vertical-align: top;
+                font-size: 15px;
+            }
+
+            .label {
+                width: 185px;
+                padding-right: 10px;
+                text-align: left;
+                white-space: nowrap;
+            }
+
+            input[type="text"],
+            input[type="date"],
+            select,
+            textarea {
+                font-family: "Times New Roman", serif;
+                font-size: 14px;
+                border: 1px solid #999;
+                background: #fff;
+                padding: 2px 4px;
+            }
+
+            input[type="text"] {
+                height: 24px;
+            }
+
+            input[type="date"],
+            select {
+                height: 25px;
+            }
+
+            .first-name {
+                width: 117px;
+            }
+
+            .last-name {
+                width: 117px;
+            }
+
+            .address {
+                width: 310px;
+            }
+
+            .city {
+                width: 145px;
+            }
+
+            .state {
+                width: 50px;
+            }
+
+            .zip {
+                width: 75px;
+            }
+
+            .country {
+                width: 145px;
+            }
+
+            .product {
+                width: 145px;
+            }
+
+            .date {
+                width: 145px;
+            }
+
+            .serial {
+                width: 145px;
+            }
+
+            .section {
+                border: 0;
+                border-top: 1px solid #4e4e4e;
+                margin: 8px 0 9px;
+            }
+
+            .choice {
+                line-height: 1.45;
+            }
+
+            .choice label {
+                display: inline-block;
+                margin-right: 28px;
+                min-width: 120px;
+            }
+
+            .comment-label {
+                padding-top: 5px;
+            }
+
+            textarea {
+                width: 350px;
+                height: 108px;
+                resize: none;
+            }
+
+            .buttons {
+                text-align: center;
+                padding-top: 6px;
+            }
+
+            button {
+                font-family: "Times New Roman", serif;
+                font-size: 14px;
+                padding: 2px 10px;
+                margin: 0 4px;
+                cursor: pointer;
+            }
+
+            .required-note {
+                font-size: 12px;
+                text-align: right;
+                margin-top: 3px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="page">
+            <img class="logo" src="img/Jackson.gif" alt="Jackson Electronics">
+
+            <h1>Registration Form</h1>
+
+            <div class="intro">Register your Jackson Electronics product here</div>
+
+            <form id="registerForm">
+                <table>
+                    <tr>
+                        <td class="label">First Name:</td>
+                        <td>
+                            <input class="first-name" type="text" name="firstName">
+                            &nbsp;Last Name:
+                            <input class="last-name" type="text" name="lastName">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="label">Address #1:</td>
+                        <td><input class="address" type="text" name="address1"></td>
+                    </tr>
+
+                    <tr>
+                        <td class="label">Address #2:</td>
+                        <td><input class="address" type="text" name="address2"></td>
+                    </tr>
+
+                    <tr>
+                        <td class="label">City:</td>
+                        <td>
+                            <input class="city" type="text" name="city">
+                            &nbsp;State:
+                            <input class="state" type="text" name="state">
+                            &nbsp;Zip:
+                            <input class="zip" type="text" name="zip">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="label">Country:</td>
+                        <td>
+                            <select class="country" name="country">
+                                <option>United States</option>
+                                <option>Vietnam</option>
+                                <option>Canada</option>
+                                <option>United Kingdom</option>
+                                <option>Other</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+
+                <div class="section"></div>
+
+                <table>
+                    <tr>
+                        <td class="label">Product:</td>
+                        <td>
+                            <select class="product" name="product">
+                                <option>ScanMaster</option>
+                                <option>PhotoMaster</option>
+                                <option>PrintMaster</option>
+                                <option>DataMaster</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="label">Date Purchased:</td>
+                        <td><input class="date" type="date" name="purchaseDate"></td>
+                    </tr>
+
+                    <tr>
+                        <td class="label">Serial #:</td>
+                        <td><input class="serial" type="text" name="serial"></td>
+                    </tr>
+
+                    <tr>
+                        <td class="label">Used for:</td>
+                        <td class="choice">
+                            <label><input type="radio" name="usedFor" value="Home"> Home</label>
+                            <label><input type="radio" name="usedFor" value="Educational Institution"> Educational Institution</label>
+                            <br>
+                            <label><input type="radio" name="usedFor" value="Business" checked> Business</label>
+                            <label><input type="radio" name="usedFor" value="Other"> Other</label>
+                            <br>
+                            <label><input type="radio" name="usedFor" value="Government"> Government</label>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="label">System (check all that apply):</td>
+                        <td class="choice">
+                            <label><input type="checkbox" name="system" value="Windows"> Windows</label>
+                            <label><input type="checkbox" name="system" value="UNIX"> UNIX</label>
+                            <br>
+                            <label><input type="checkbox" name="system" value="Macintosh"> Macintosh</label>
+                            <label><input type="checkbox" name="system" value="Other"> Other</label>
+                        </td>
+                    </tr>
+                </table>
+
+                <div class="section"></div>
+
+                <table>
+                    <tr>
+                        <td class="label comment-label">Comments?</td>
+                        <td>
+                            <textarea name="comments"></textarea>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="2" class="buttons">
+                            <button type="button" id="registerBtn">Click to register</button>
+                            <button type="button" id="cancelBtn">Click to cancel</button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+
+        <script>
+            const form = document.getElementById("registerForm");
+
+            document.getElementById("registerBtn").addEventListener("click", function () {
+                alert("Đăng ký");
+            });
+
+            document.getElementById("cancelBtn").addEventListener("click", function () {
+                form.reset();
+            });
+        </script>
+    </body>
+</html>
