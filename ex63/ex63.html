@@ -1,0 +1,201 @@
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>Đăng ký thành viên</title>
+    <style type="text/css">
+        table {
+            border-collapse: collapse;
+        }
+        td, th {
+            padding: 5px;
+        }
+        .form-table td {
+            padding: 5px 10px;
+        }
+    </style>
+    <script>
+        function loadDate() {
+            var selDay = document.getElementById("selDay");
+            for (var i = 1; i <= 31; i++) {
+                var opt = document.createElement("option");
+                opt.value = i; opt.text = i;
+                selDay.appendChild(opt);
+            }
+
+            var selMonth = document.getElementById("selMonth");
+            for (var i = 1; i <= 12; i++) {
+                var opt = document.createElement("option");
+                opt.value = i; opt.text = i;
+                selMonth.appendChild(opt);
+            }
+
+            var selYear = document.getElementById("selYear");
+            var currentYear = new Date().getFullYear();
+            for (var i = 1970; i <= currentYear; i++) {
+                var opt = document.createElement("option");
+                opt.value = i; opt.text = i;
+                selYear.appendChild(opt);
+            }
+        }
+
+        function checkEmail(email) {
+            var re = /\S+@\S+\.\S+/;
+            return re.test(email);
+        }
+
+        function dangKy() {
+            var name = document.getElementById("txtName").value;
+            var email = document.getElementById("txtEmail").value;
+
+            if (name.trim() === "") {
+                alert("Tên không được bỏ trống!");
+                document.getElementById("txtName").focus();
+                return;
+            }
+            if (email.trim() === "" || !checkEmail(email)) {
+                alert("Email không hợp lệ!");
+                document.getElementById("txtEmail").focus();
+                return;
+            }
+
+            var year = document.getElementById("selYear").value;
+
+            var gender = "";
+            var radiosGender = document.getElementsByName("gender");
+            for (var i = 0; i < radiosGender.length; i++) {
+                if (radiosGender[i].checked) {
+                    gender = radiosGender[i].value;
+                    break;
+                }
+            }
+
+            var hobbies = [];
+            var chkHobbies = document.getElementsByName("hobby");
+            for (var i = 0; i < chkHobbies.length; i++) {
+                if (chkHobbies[i].checked) {
+                    hobbies.push(chkHobbies[i].value);
+                }
+            }
+            var hobbyStr = hobbies.join(", ");
+
+            var color = "";
+            var radiosColor = document.getElementsByName("color");
+            for (var i = 0; i < radiosColor.length; i++) {
+                if (radiosColor[i].checked) {
+                    color = radiosColor[i].value;
+                    break;
+                }
+            }
+
+            var tbody = document.getElementById("tbMember");
+            var tr = document.createElement("tr");
+
+            tr.onmouseover = function() {
+                this.style.backgroundColor = "yellow";
+            };
+            tr.onmouseout = function() {
+                this.style.backgroundColor = "white";
+            };
+
+            var dataList = [name, email, gender, year, hobbyStr, color];
+            for (var i = 0; i < dataList.length; i++) {
+                var td = document.createElement("td");
+                td.innerText = dataList[i];
+                tr.appendChild(td);
+            }
+
+            tbody.appendChild(tr);
+        }
+
+        function tiep() {
+            document.getElementById("txtName").value = "";
+            document.getElementById("txtEmail").value = "";
+            
+            document.getElementById("selDay").selectedIndex = 0;
+            document.getElementById("selMonth").selectedIndex = 0;
+            document.getElementById("selYear").selectedIndex = 0;
+
+            document.getElementsByName("gender")[0].checked = true;
+            document.getElementsByName("color")[0].checked = true;
+
+            var chkHobbies = document.getElementsByName("hobby");
+            for (var i = 0; i < chkHobbies.length; i++) {
+                chkHobbies[i].checked = false;
+            }
+
+            document.getElementById("txtName").focus();
+        }
+    </script>
+</head>
+<body onload="loadDate()">
+    <h2>Đăng ký thành viên</h2>
+    <table class="form-table" border="0">
+        <tr>
+            <td>Tên(*)</td>
+            <td><input type="text" id="txtName"></td>
+        </tr>
+        <tr>
+            <td>Ngày sinh(*)</td>
+            <td>
+                Ngày: <select id="selDay"></select>
+                Tháng: <select id="selMonth"></select>
+                Năm: <select id="selYear"></select>
+            </td>
+        </tr>
+        <tr>
+            <td>Giới tính(*)</td>
+            <td>
+                <input type="radio" name="gender" value="Nam" checked> Nam
+                <input type="radio" name="gender" value="Nữ"> Nữ
+            </td>
+        </tr>
+        <tr>
+            <td>Email(*)</td>
+            <td><input type="text" id="txtEmail"></td>
+        </tr>
+        <tr>
+            <td valign="top">Sở thích của bạn:</td>
+            <td>
+                <input type="checkbox" name="hobby" value="Mua sắm"> Mua sắm<br>
+                <input type="checkbox" name="hobby" value="Du lịch"> Du lịch<br>
+                <input type="checkbox" name="hobby" value="Tán gẫu"> Tán gẫu<br>
+                <input type="checkbox" name="hobby" value="Đọc sách"> Đọc sách<br>
+                <input type="checkbox" name="hobby" value="Nghe nhạc"> Nghe nhạc
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">Màu yêu thích của bạn:</td>
+            <td>
+                <input type="radio" name="color" value="Màu đỏ" checked> Màu đỏ<br>
+                <input type="radio" name="color" value="Màu vàng"> Màu vàng<br>
+                <input type="radio" name="color" value="Màu xanh lá cây"> Màu xanh lá cây<br>
+                <input type="radio" name="color" value="Màu xanh tím"> Màu xanh tím
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <button onclick="dangKy()">Đăng ký</button>
+                <button onclick="tiep()">Tiếp</button>
+            </td>
+        </tr>
+    </table>
+
+    <br><hr><br>
+
+    <table border="1" style="width: 100%; text-align: left;">
+        <thead>
+            <tr style="background-color: #f2f2f2;">
+                <th>Tên</th>
+                <th>Email</th>
+                <th>Giới tính</th>
+                <th>Năm sinh</th>
+                <th>Sở thích</th>
+                <th>Màu yêu thích</th>
+            </tr>
+        </thead>
+        <tbody id="tbMember">
+        </tbody>
+    </table>
+</body>
+</html>
